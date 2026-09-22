@@ -1,0 +1,933 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl/",
+    "bioschemastypes": "https://discovery.biothings.io/ns/bioschemastypes/",
+    "bioschemastypesdrafts": "https://discovery.biothings.io/ns/bioschemastypesdrafts/",
+    "dct": "http://purl.org/dc/terms/",
+    "@dateModified": "08/14/2026, 08:23:13",
+    "sampletemp": "https://discovery.biothings.io/ns/sampletemp/",
+    "bioschemas": "https://discovery.biothings.io/ns/bioschemas/"
+  },
+  "@graph": [
+    {
+      "@id": "sampletemp:Sample",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Use Nick's description about this class.",
+      "rdfs:label": "Sample",
+      "rdfs:subClassOf": {
+        "@id": "bioschemastypesdrafts:Sample"
+      },
+      "$validation": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "additionalProperty": {
+            "description": "A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. https://schema.org/width, https://schema.org/color, https://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism. ",
+            "oneOf": [
+              {
+                "@type": "PropertyValue",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "PropertyValue",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            ]
+          },
+          "alternateIdentifier": {
+            "description": "An additional identifier for the same instance of the resource. "
+          },
+          "citation": {
+            "description": "List publications where the sample is mentioned or described."
+          },
+          "collectionMethod": {
+            "description": "Provide information about the conditions and methods of acquisition of samples. ",
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "collector": {
+            "description": "The Person or Organization who collected the Sample.",
+            "anyOf": [
+              {
+                "@type": "Organization",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "legalName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sameAs": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "topic": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "description",
+                  "legalName",
+                  "name",
+                  "sameAs",
+                  "topic",
+                  "type"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Organization",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sameAs": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "topic": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "legalName",
+                    "name",
+                    "sameAs",
+                    "topic",
+                    "type"
+                  ]
+                }
+              },
+              {
+                "@type": "Person",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mainEntityOfPage": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "@type": "CreativeWork"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "mainEntityOfPage",
+                  "name"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Person",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "mainEntityOfPage": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "@type": "CreativeWork"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "mainEntityOfPage",
+                    "name"
+                  ]
+                }
+              }
+            ]
+          },
+          "conditionsOfAccess": {
+            "description": "Sample access statement outlining conditions/requirements need to be fulfilled before access to the sample is granted."
+          },
+          "conformsTo": {
+            "description": "Used to state the Bioschemas profile that the markup relates to. The versioned URL of the profile must be used. Note that we use a CURIE in the table here but the full URL for Dublin Core terms must be used in the markup (http://purl.org/dc/terms/conformsTo), see example."
+          },
+          "contactPoint": {
+            "description": "A person or organization that can be contacted for more information or support.",
+            "oneOf": [
+              {
+                "@type": "Organization",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "legalName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sameAs": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "topic": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "description",
+                  "legalName",
+                  "name",
+                  "sameAs",
+                  "topic",
+                  "type"
+                ]
+              },
+              {
+                "@type": "Person",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mainEntityOfPage": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "@type": "CreativeWork"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "mainEntityOfPage",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "contributor": {
+            "description": "A person or organization that contributes to the work.",
+            "anyOf": [
+              {
+                "@type": "Organization",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "legalName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sameAs": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "topic": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "description",
+                  "legalName",
+                  "name",
+                  "sameAs",
+                  "topic",
+                  "type"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Organization",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sameAs": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "topic": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "legalName",
+                    "name",
+                    "sameAs",
+                    "topic",
+                    "type"
+                  ]
+                }
+              },
+              {
+                "@type": "Person",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mainEntityOfPage": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "@type": "CreativeWork"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "mainEntityOfPage",
+                  "name"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Person",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "mainEntityOfPage": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "@type": "CreativeWork"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "mainEntityOfPage",
+                    "name"
+                  ]
+                }
+              }
+            ]
+          },
+          "dateCollected": {
+            "description": "The date on which the sample was collected.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
+          },
+          "dateCreated": {
+            "description": "The date the sample was created or added to a DataFeed.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
+          },
+          "dateModified": {
+            "description": "The date the sample record was last updated.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            ]
+          },
+          "dateProcessed": {
+            "description": "The date the sample was processed or used in a method.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            ]
+          },
+          "datePublished": {
+            "description": "The date when the record of the sample will be made publicly available.",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "string",
+                "format": "date-time"
+              }
+            ]
+          },
+          "environmentalSystem": {
+            "description": "A category or description of the habitat that describes elements of an ecosystem where the sample was collected. Where possible use controlled vocabulary such as ENVO."
+          },
+          "ethics": {
+            "description": "Indicate which ethics policies and/or social considerations are associated with the sample."
+          },
+          "experimentalPurpose": {
+            "description": "Describe the planned or executed experimental procedures involving the samples."
+          },
+          "funding": {
+            "description": "Provide funding information."
+          },
+          "hasPart": {
+            "description": "Describe related items including other resources related to the samples. For example a subsample of this sample."
+          },
+          "instrument": {
+            "description": "Provide description of instruments and devices used in collecting, processing and analysis of samples."
+          },
+          "isControl": {
+            "description": "Indicates whether the sample is being used as a normal control, may be in combination with another sample."
+          },
+          "isPartOf": {
+            "description": "Describe related items including other resources related to the samples. For example a supersample of this sample."
+          },
+          "isRelatedTo": {
+            "description": "Describe related items including other resources related to the samples."
+          },
+          "itemLocation": {
+            "description": "Current location of the sample."
+          },
+          "keywords": {
+            "description": "Terms that capture the main topics e.g. cancer, plant biology."
+          },
+          "locationCreated": {
+            "description": "The place where a sample underwent processing or creation, distinct from its original location."
+          },
+          "locationOfOrigin": {
+            "description": "The location from which the sample was originally collected."
+          },
+          "maintainer": {
+            "description": "The Person or Organization who is responsible for the Sample.",
+            "anyOf": [
+              {
+                "@type": "Organization",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "legalName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sameAs": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "topic": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "description",
+                  "legalName",
+                  "name",
+                  "sameAs",
+                  "topic",
+                  "type"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Organization",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "sameAs": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "topic": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "type": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "legalName",
+                    "name",
+                    "sameAs",
+                    "topic",
+                    "type"
+                  ]
+                }
+              },
+              {
+                "@type": "Person",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mainEntityOfPage": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "@type": "CreativeWork"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "mainEntityOfPage",
+                  "name"
+                ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Person",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "mainEntityOfPage": {
+                      "oneOf": [
+                        {
+                          "type": "object",
+                          "@type": "CreativeWork"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "description",
+                    "mainEntityOfPage",
+                    "name"
+                  ]
+                }
+              }
+            ]
+          },
+          "project": {
+            "description": "Information on the project."
+          },
+          "sampleAvailability": {
+            "description": "Indicate whether this resource is available for reuse."
+          },
+          "sampleProcess": {
+            "description": "The processing technique that was applied to the sample, methods used to prepare the samples, including SOPs (Standard Operating Procedures)."
+          },
+          "sampleQuantity": {
+            "description": "A numeric value for a measurement of the size  of a sample."
+          },
+          "sampleState": {
+            "description": "Specify the composition and state of the sample. This can be used to indicate its phsyical state (gas, liquid, solid), degradation status (deteriorated, partially degraded) or passage number."
+          },
+          "sampleStorageTemperature": {
+            "description": "The temperature at which the sample is stored."
+          },
+          "sampleType": {
+            "description": "Indicate the type of sample. Note that this is intentionally broad to allow different types of specimens, i.e. cells, rock, sand."
+          },
+          "studyID": {
+            "description": "Indicate the study ID."
+          },
+          "studyTitle": {
+            "description": "Title of the study to which the samples belong"
+          },
+          "submitter": {
+            "description": "The person or organization that registers the sample. ",
+            "oneOf": [
+              {
+                "@type": "Organization",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "legalName": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "sameAs": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "topic": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "type": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "description",
+                  "legalName",
+                  "name",
+                  "sameAs",
+                  "topic",
+                  "type"
+                ]
+              },
+              {
+                "@type": "Person",
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "mainEntityOfPage": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "@type": "CreativeWork"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "mainEntityOfPage",
+                  "name"
+                ]
+              }
+            ]
+          },
+          "description": {
+            "description": "A description of the item."
+          },
+          "identifier": {
+            "description": "The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.\n        "
+          },
+          "name": {
+            "description": "The name of the item."
+          },
+          "sameAs": {
+            "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website."
+          },
+          "url": {
+            "description": "URL of the item."
+          }
+        },
+        "required": [],
+        "recommended": [],
+        "optional": []
+      },
+      "schemaVersion": [
+        "https://schema.org/docs/releases.html#v30.0"
+      ]
+    }
+  ]
+}
