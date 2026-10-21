@@ -314,10 +314,6 @@
               }
             ]
           },
-          "conformsTo": {
-            "description": "Used to state the Bioschemas profile that the markup relates to. The versioned URL of the profile must be used. Note that we use a CURIE in the table here but the full URL for Dublin Core terms must be used in the markup (http://purl.org/dc/terms/conformsTo), see example.",
-            "owl:cardinality": "many"
-          },
           "contactPoint": {
             "description": "A person or organization that can be contacted for more information or support.",
             "owl:cardinality": "one",
@@ -752,10 +748,6 @@
               }
             ]
           },
-          "description": {
-            "description": "A description of the item.",
-            "owl:cardinality": "one"
-          },
           "environmentalSystem": {
             "description": "A category or description of the habitat that describes elements of an ecosystem where the sample was collected. Where possible use controlled vocabulary such as ENVO.",
             "owl:cardinality": "many",
@@ -918,10 +910,6 @@
                 }
               }
             ]
-          },
-          "identifier": {
-            "description": "The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.\n        ",
-            "owl:cardinality": "one"
           },
           "instrument": {
             "description": "Provide description of instruments and devices used in collecting, processing and analysis of samples.",
@@ -1426,10 +1414,6 @@
               }
             ]
           },
-          "name": {
-            "description": "The name of the item.",
-            "owl:cardinality": "one"
-          },
           "project": {
             "description": "Information on the project.",
             "owl:cardinality": "many",
@@ -1456,10 +1440,6 @@
                 }
               }
             ]
-          },
-          "sameAs": {
-            "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
-            "owl:cardinality": "many"
           },
           "sampleAvailability": {
             "description": "Indicate whether this resource is available for reuse.",
@@ -1749,6 +1729,64 @@
                 ]
               }
             ]
+          },
+          "description": {
+            "description": "A description of the item.",
+            "owl:cardinality": "one",
+            "type": "string"
+          },
+          "identifier": {
+            "description": "The identifier property represents any kind of identifier for any kind of [[Thing]], such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See [background notes](/docs/datamodel.html#identifierBg) for more details.\n        ",
+            "owl:cardinality": "one"
+          },
+          "name": {
+            "description": "The name of the item.",
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "sameAs": {
+            "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            ]
+          },
+          "url": {
+            "description": "URL of the item.",
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uri"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            ]
           }
         },
         "required": [
@@ -1786,7 +1824,8 @@
           "submitter",
           "description",
           "name",
-          "sameAs"
+          "sameAs",
+          "url"
         ],
         "optional": [
           "additionalProperty",
